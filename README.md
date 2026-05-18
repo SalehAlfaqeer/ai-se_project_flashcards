@@ -37,3 +37,5 @@ By default, there's no syntax highlighting.
 ```
 touch README.md
 ```
+
+![Demo screenshot](./assets/images/demo/Image.png)
