@@ -38,4 +38,8 @@ By default, there's no syntax highlighting.
 touch README.md
 ```
 
+## Deployed Site
+
+Check out [this site](https://salehalfaqeer.github.io/ai-se_project_flashcards/) on GitHub Pages.
+
 ![Demo screenshot](./assets/images/demo/Image.png)
