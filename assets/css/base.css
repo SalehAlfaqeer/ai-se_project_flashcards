@@ -1,0 +1,6 @@
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: inherit;
+  color: inherit;
+}

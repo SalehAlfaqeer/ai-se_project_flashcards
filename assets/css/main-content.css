@@ -1,0 +1,9 @@
+.page__main-content {
+  margin-top: 20px;
+  margin-bottom: 138px;
+  flex-grow: 1;
+}
+
+.page__main-content_type_carousel {
+  margin-top: 40px;
+}

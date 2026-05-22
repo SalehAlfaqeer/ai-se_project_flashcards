@@ -1,0 +1,80 @@
+.deck {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #64d583;
+  width: 325px;
+  height: 205px;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+}
+
+.deck__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.deck_color_green {
+  background-color: #64d583;
+}
+
+.deck_color_blue {
+  background-color: #91a8f9;
+}
+
+.deck_color_pink {
+  background-color: #ee92d7;
+}
+
+.deck_color_purple {
+  background-color: #aa8ef0;
+}
+
+.deck_color_orange {
+  background-color: #ee955e;
+}
+
+.deck_color_yellow {
+  background-color: #f5d770;
+}
+
+.deck__title {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.deck__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deck__count {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.deck__delete-btn {
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+  background-color: rgba(255, 0, 0, 0);
+  background-image: url("../images/delete.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  z-index: 2;
+}
+
+.deck__delete-btn:hover {
+  cursor: pointer;
+  opacity: 1;
+}
