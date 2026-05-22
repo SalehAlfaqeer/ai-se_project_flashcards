@@ -101,7 +101,7 @@ function renderCarouselView(deck) {
 
   removeColorClasses(cardEl);
   const colorName = hexToString(deck.color) || "green";
-  cardEl.classList.add(`card__carousel_color_${colorName}`);
+  cardEl.classList.add(`carousel__card_color_${colorName}`);
 
   initializeCarousel();
   updateDisplay();

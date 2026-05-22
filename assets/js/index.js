@@ -3,7 +3,7 @@ import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 
 const deckTemplateEl = document.querySelector("#deck-template");
-const deckListEl = document.querySelector(".decks__list");
+const deckListEl = document.querySelector(".gallery__list");
 const pageMainContentEl = document.querySelector(".page__main-content");
 const homeSectionEl = document.querySelector("#home");
 const carouselSectionEl = document.querySelector("#carousel");
@@ -11,10 +11,10 @@ const notFoundSectionEl = document.querySelector("#not-found");
 
 function createDeckEl(deck) {
   const deckEl = deckTemplateEl.content.querySelector("li").cloneNode(true);
-  const titleEl = deckEl.querySelector(".deck__title");
-  const countEl = deckEl.querySelector(".deck__count");
-  const deleteBtn = deckEl.querySelector(".deck__delete-btn");
-  const deckLinkEl = deckEl.querySelector(".deck__link");
+  const titleEl = deckEl.querySelector(".card__title");
+  const countEl = deckEl.querySelector(".card__count");
+  const deleteBtn = deckEl.querySelector(".card__delete-btn");
+  const deckLinkEl = deckEl.querySelector(".card__link");
 
   titleEl.textContent = deck.name;
   countEl.textContent = `${deck.cards.length} cards`;
@@ -24,7 +24,7 @@ function createDeckEl(deck) {
 
   const colorName = hexToString(deck.color) || "green";
   removeColorClasses(deckEl);
-  deckEl.classList.add(`deck_color_${colorName}`);
+  deckEl.classList.add(`card_color_${colorName}`);
 
   deleteBtn.addEventListener("click", () => {
     deckEl.remove();

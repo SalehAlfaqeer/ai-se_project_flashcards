@@ -1,10 +1,10 @@
-.decks__title {
+.gallery__title {
   margin: 40px 0 40px;
   font-weight: 700;
   font-size: 40px;
 }
 
-.decks__list {
+.gallery__list {
   display: flex;
   flex-wrap: wrap;
   gap: 18px 20px;
@@ -13,7 +13,7 @@
   padding: 0;
 }
 
-.decks__new-deck-btn {
+.gallery__new-deck-btn {
   display: flex;
   width: 325px;
   height: 205px;
@@ -27,7 +27,7 @@
   background-color: #d9d9d9;
 }
 
-.decks__new-deck-btn:hover {
+.gallery__new-deck-btn:hover {
   color: #1a1a1a;
   background-color: #c5c5c5;
   cursor: pointer;
