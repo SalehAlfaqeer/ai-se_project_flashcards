@@ -20,6 +20,7 @@ function createDeckEl(deck) {
   countEl.textContent = `${deck.cards.length} cards`;
   if (deckLinkEl) {
     deckLinkEl.href = `#/${deck.id}`;
+    deckLinkEl.setAttribute("aria-label", `Practice ${deck.name}`);
   }
 
   const colorName = hexToString(deck.color) || "green";
