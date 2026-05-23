@@ -13,7 +13,7 @@
   padding: 0;
 }
 
-.gallery__new-deck-btn {
+.gallery__new-card-btn {
   display: flex;
   width: 325px;
   height: 205px;
@@ -27,7 +27,7 @@
   background-color: #d9d9d9;
 }
 
-.gallery__new-deck-btn:hover {
+.gallery__new-card-btn:hover {
   color: #1a1a1a;
   background-color: #c5c5c5;
   cursor: pointer;

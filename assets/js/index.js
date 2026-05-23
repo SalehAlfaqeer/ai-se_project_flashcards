@@ -5,7 +5,7 @@ import { renderCarouselView } from "./carousel.js";
 const deckTemplateEl = document.querySelector("#deck-template");
 const deckListEl = document.querySelector(".gallery__list");
 const pageMainContentEl = document.querySelector(".page__main-content");
-const homeSectionEl = document.querySelector("#home");
+const deckViewSectionEl = document.querySelector("#deck-view");
 const carouselSectionEl = document.querySelector("#carousel");
 const notFoundSectionEl = document.querySelector("#not-found");
 
@@ -42,7 +42,7 @@ decks.forEach(renderDeckEl);
 
 function hideViews() {
   pageMainContentEl.classList.remove("page__main-content_type_carousel");
-  [homeSectionEl, carouselSectionEl, notFoundSectionEl].forEach((section) => {
+  [deckViewSectionEl, carouselSectionEl, notFoundSectionEl].forEach((section) => {
     if (section) {
       section.hidden = true;
     }
@@ -50,7 +50,7 @@ function hideViews() {
 }
 
 function renderCurrentView() {
-  const hash = window.location.hash || "#home";
+  const hash = window.location.hash || "#deck-view";
 
   hideViews();
 
@@ -70,8 +70,8 @@ function renderCurrentView() {
   }
 
   switch (hash) {
-    case "#home":
-      homeSectionEl.hidden = false;
+    case "#deck-view":
+      deckViewSectionEl.hidden = false;
       break;
     default:
       notFoundSectionEl.hidden = false;
