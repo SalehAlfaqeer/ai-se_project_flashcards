@@ -45,10 +45,33 @@
               <h3 class="card__title"></h3>
               <div class="card__row">
                 <p class="card__count"></p>
-                <button class="card__delete-btn" type="button"></button>
+                <button
+                  class="card__delete-btn"
+                  type="button"
+                  aria-label="Delete deck"
+                ></button>
               </div>
             </li>
           </template>
+
+          <template id="card-template">
+            <li class="card card_color_green">
+              <h3 class="card__title"></h3>
+              <div class="card__row">
+                <button
+                  class="card__edit-btn"
+                  type="button"
+                  aria-label="Edit card"
+                ></button>
+                <button
+                  class="card__delete-btn"
+                  type="button"
+                  aria-label="Delete card"
+                ></button>
+              </div>
+            </li>
+          </template>
+
           <!-- Trying to add a new deck -->
           <li>
             <button
