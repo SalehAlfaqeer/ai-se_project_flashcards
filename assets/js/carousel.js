@@ -46,6 +46,15 @@ function updateDisplay() {
     return;
   }
 
+  if (currentDeck.cards.length === 0) {
+    carouselTitleEl.textContent = `${currentDeck.name} · 0/0`;
+    cardTextEl.textContent = "No cards in this deck";
+    disableButton(leftBtn);
+    disableButton(rightBtn);
+    disableButton(flipBtn);
+    return;
+  }
+
   const currentCard = currentDeck.cards[currentIndex];
   carouselTitleEl.textContent = getCarouselTitleString(
     currentDeck,
@@ -98,6 +107,7 @@ function renderCarouselView(deck) {
   currentDeck = deck;
   currentIndex = 0;
   showingQuestion = true;
+  enableButton(flipBtn);
 
   removeColorClasses(cardEl);
   const colorName = hexToString(deck.color) || "green";

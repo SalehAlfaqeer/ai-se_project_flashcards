@@ -34,10 +34,7 @@
     </header>
     <main class="page__main-content">
       <section id="deck-view" class="gallery">
-        <div>
-          <h2 class="gallery__title"></h2>
-          <button>Practice</button>
-        </div>
+        <h2 class="gallery__title">My Decks</h2>
         <ul class="gallery__list">
           <template id="deck-template">
             <li class="card card_color_green">
@@ -54,14 +51,33 @@
             </li>
           </template>
 
+          <!-- Trying to add a new deck -->
+          <li>
+            <button
+              aria-label="Add a new deck"
+              type="button"
+              class="gallery__new-card-btn"
+            >
+              + New Deck
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section id="card-view" class="gallery" hidden>
+        <div class="gallery__header">
+          <h2 class="gallery__title"></h2>
+          <a class="gallery__practice-btn" href="#">Practice</a>
+        </div>
+        <ul class="gallery__list">
           <template id="card-template">
             <li class="card card_color_green">
               <h3 class="card__title"></h3>
               <div class="card__row">
                 <button
-                  class="card__edit-btn"
+                  class="card__flip-btn"
                   type="button"
-                  aria-label="Edit card"
+                  aria-label="Flip card"
                 ></button>
                 <button
                   class="card__delete-btn"
@@ -72,14 +88,13 @@
             </li>
           </template>
 
-          <!-- Trying to add a new deck -->
           <li>
             <button
-              aria-label="Add a new deck"
+              aria-label="Add a new card"
               type="button"
               class="gallery__new-card-btn"
             >
-              + New Deck
+              + New Card
             </button>
           </li>
         </ul>
