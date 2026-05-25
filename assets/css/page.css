@@ -11,3 +11,8 @@
   flex-direction: column;
   min-height: 100vh;
 }
+@media screen and (max-width: 600px) {
+  .page {
+    padding: 20px;
+  }
+}

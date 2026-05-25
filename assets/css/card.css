@@ -80,14 +80,22 @@
 
 .card__flip-btn {
   background-image: url("../images/flip.svg");
+  opacity: 0.65;
 }
 
 .card__delete-btn {
   background-image: url("../images/delete.svg");
+  opacity: 0.65;
 }
 
 .card__flip-btn:hover,
 .card__delete-btn:hover {
   cursor: pointer;
-  opacity: 0.65;
+  opacity: 1;
+}
+
+@media (max-width: 750px) {
+  .card {
+    min-width: 100%;
+  }
 }
