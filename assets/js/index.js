@@ -8,11 +8,18 @@ const deckListEl = document.querySelector("#deck-view .gallery__list");
 const addDeckEl = deckListEl
   .querySelector(".gallery__new-card-btn")
   .closest("li");
+const pageEl = document.querySelector(".page");
 const pageMainContentEl = document.querySelector(".page__main-content");
 const deckViewSectionEl = document.querySelector("#deck-view");
 const cardViewSectionEl = document.querySelector("#card-view");
 const carouselSectionEl = document.querySelector("#carousel");
 const notFoundSectionEl = document.querySelector("#not-found");
+const sections = [
+  deckViewSectionEl,
+  cardViewSectionEl,
+  carouselSectionEl,
+  notFoundSectionEl,
+];
 
 function createDeckEl(deck) {
   const deckEl = deckTemplateEl.content.querySelector("li").cloneNode(true);
@@ -46,24 +53,22 @@ function renderDeckEl(deck) {
 
 decks.forEach(renderDeckEl);
 
-function hideViews() {
+function showView(sectionToShow, displayValue = "block") {
+  pageEl.classList.remove("page_no-mobile-bar");
   pageMainContentEl.classList.remove("page__main-content_type_carousel");
-  [
-    deckViewSectionEl,
-    cardViewSectionEl,
-    carouselSectionEl,
-    notFoundSectionEl,
-  ].forEach((section) => {
+
+  sections.forEach((section) => {
     if (section) {
-      section.hidden = true;
+      section.hidden = false;
+      section.style.display = "none";
     }
   });
+
+  sectionToShow.style.display = displayValue;
 }
 
 function renderCurrentView() {
   const hash = window.location.hash || "#deck-view";
-
-  hideViews();
 
   if (hash.startsWith("#/")) {
     const [deckId, action] = hash.slice(2).split("/");
@@ -71,32 +76,33 @@ function renderCurrentView() {
 
     if (currentDeck) {
       if (action === "practice") {
+        showView(carouselSectionEl, "block");
+        pageEl.classList.add("page_no-mobile-bar");
         pageMainContentEl.classList.add("page__main-content_type_carousel");
-        carouselSectionEl.hidden = false;
         renderCarouselView(currentDeck);
         return;
       }
 
       if (!action) {
-        cardViewSectionEl.hidden = false;
+        showView(cardViewSectionEl, "block");
         renderCardView(currentDeck);
         return;
       }
 
-      notFoundSectionEl.hidden = false;
+      showView(notFoundSectionEl, "block");
       return;
     }
 
-    notFoundSectionEl.hidden = false;
+    showView(notFoundSectionEl, "block");
     return;
   }
 
   switch (hash) {
     case "#deck-view":
-      deckViewSectionEl.hidden = false;
+      showView(deckViewSectionEl, "block");
       break;
     default:
-      notFoundSectionEl.hidden = false;
+      showView(notFoundSectionEl, "block");
       break;
   }
 }

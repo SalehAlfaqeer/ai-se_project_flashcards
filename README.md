@@ -43,3 +43,23 @@ touch README.md
 Check out [this site](https://salehalfaqeer.github.io/ai-se_project_flashcards/) on GitHub Pages.
 
 ![Demo screenshot](./assets/images/demo/Image.png)
+
+## Changes from Sprint #03
+
+### The home view
+
+- Making the header bar looks more responsive in the mobile.
+- Creating mobile-bar.css file, to implement the small screen codes inside it.
+- Changing the "New Desck" position to be at the bottom of the page in small screen view (and style it).
+- Making the "linear-gradient" style to the footer.
+
+### The deck view
+
+- same changes in the "home view" page + styling and repositioning the practice button.
+
+### The carousel view
+
+- change the position of the buttons in mobile view to be in one row.
+- Change the card width to be full screen.
+
+and we added some shadow to the cards and buttons.

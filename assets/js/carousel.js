@@ -56,15 +56,20 @@ function updateDisplay() {
   }
 
   const currentCard = currentDeck.cards[currentIndex];
+  const colorName = hexToString(currentDeck.color) || "green";
   carouselTitleEl.textContent = getCarouselTitleString(
     currentDeck,
     currentIndex,
   );
 
+  removeColorClasses(cardEl);
+
   if (showingQuestion) {
     cardTextEl.textContent = currentCard.question;
+    cardEl.classList.add(`carousel__card_color_${colorName}`);
   } else {
     cardTextEl.textContent = currentCard.answer;
+    cardEl.classList.add("carousel__card_color_white");
   }
 
   updateArrows();
@@ -108,10 +113,6 @@ function renderCarouselView(deck) {
   currentIndex = 0;
   showingQuestion = true;
   enableButton(flipBtn);
-
-  removeColorClasses(cardEl);
-  const colorName = hexToString(deck.color) || "green";
-  cardEl.classList.add(`carousel__card_color_${colorName}`);
 
   initializeCarousel();
   updateDisplay();
