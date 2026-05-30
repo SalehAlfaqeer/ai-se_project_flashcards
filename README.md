@@ -63,3 +63,8 @@ Check out [this site](https://salehalfaqeer.github.io/ai-se_project_flashcards/)
 - Change the card width to be full screen.
 
 and we added some shadow to the cards and buttons.
+
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/1gnVl-43xHpvDjk3OBgo_LpPLVGszHz_G/view?usp=drive_link), where I describe my
+project and some challenges I faced while building it.
