@@ -123,6 +123,104 @@
         </div>
       </section>
 
+      <section id="new-deck" class="new-deck" hidden>
+        <h2 class="new-deck__title">New Deck</h2>
+        <form class="new-deck__form">
+          <fieldset class="new-deck__color-picker">
+            <legend class="new-deck__legend">Pick the deck color</legend>
+            <label class="new-deck__color-label" for="green">
+              <input
+                class="new-deck__color-input new-deck__color-input_color_green"
+                aria-label="Green"
+                name="color"
+                id="green"
+                value="#64D583"
+                type="radio"
+                checked
+              />
+            </label>
+
+            <label class="new-deck__color-label" for="blue">
+              <input
+                class="new-deck__color-input new-deck__color-input_color_blue"
+                aria-label="Blue"
+                name="color"
+                id="blue"
+                value="#91A8F9"
+                type="radio"
+              />
+            </label>
+
+            <label class="new-deck__color-label" for="purple">
+              <input
+                class="new-deck__color-input new-deck__color-input_color_purple"
+                aria-label="Purple"
+                name="color"
+                id="purple"
+                value="#AA8EF0"
+                type="radio"
+              />
+            </label>
+
+            <label class="new-deck__color-label" for="pink">
+              <input
+                class="new-deck__color-input new-deck__color-input_color_pink"
+                aria-label="Pink"
+                name="color"
+                id="pink"
+                value="#EE92D7"
+                type="radio"
+              />
+            </label>
+
+            <label class="new-deck__color-label" for="orange">
+              <input
+                class="new-deck__color-input new-deck__color-input_color_orange"
+                aria-label="Orange"
+                name="color"
+                id="orange"
+                value="#EE955E"
+                type="radio"
+              />
+            </label>
+
+            <label class="new-deck__color-label" for="yellow">
+              <input
+                class="new-deck__color-input new-deck__color-input_color_yellow"
+                aria-label="Yellow"
+                name="color"
+                id="yellow"
+                value="#F5D770"
+                type="radio"
+              />
+            </label>
+          </fieldset>
+
+          <label class="new-deck__input-label" for="deck-name-input"
+            >Write the JSON array of cards so that it matches this schema
+            <textarea
+              class="new-deck__textarea"
+              id="deck-name-input"
+              name="deck-name-input"
+              rows="10"
+              placeholder='{
+                "name": "Deck Name", 
+                "cards": [ 
+                { 
+                  "question": "Question?", "answer": "Answer" 
+                }, 
+                ... 
+                ] 
+              }'
+            ></textarea>
+          </label>
+
+          <button class="new-deck__submit-btn" type="submit" disabled>
+            Create the Deck
+          </button>
+        </form>
+      </section>
+
       <section id="not-found" class="not-found" hidden>
         <h2 class="not-found__title">404 Not Found</h2>
         <p class="not-found__text">

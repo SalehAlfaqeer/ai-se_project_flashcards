@@ -8,16 +8,19 @@ const deckListEl = document.querySelector("#deck-view .gallery__list");
 const addDeckEl = deckListEl
   .querySelector(".gallery__new-card-btn")
   .closest("li");
+const addDeckBtn = addDeckEl.querySelector(".gallery__new-card-btn");
 const pageEl = document.querySelector(".page");
 const pageMainContentEl = document.querySelector(".page__main-content");
 const deckViewSectionEl = document.querySelector("#deck-view");
 const cardViewSectionEl = document.querySelector("#card-view");
 const carouselSectionEl = document.querySelector("#carousel");
+const newDeckViewSectionEl = document.querySelector("#new-deck");
 const notFoundSectionEl = document.querySelector("#not-found");
 const sections = [
   deckViewSectionEl,
   cardViewSectionEl,
   carouselSectionEl,
+  newDeckViewSectionEl,
   notFoundSectionEl,
 ];
 
@@ -101,11 +104,18 @@ function renderCurrentView() {
     case "#deck-view":
       showView(deckViewSectionEl, "block");
       break;
+    case "#new-deck":
+      showView(newDeckViewSectionEl, "block");
+      break;
     default:
       showView(notFoundSectionEl, "block");
       break;
   }
 }
+
+addDeckBtn.addEventListener("click", () => {
+  window.location.hash = "#new-deck";
+});
 
 window.addEventListener("hashchange", renderCurrentView);
 renderCurrentView();
