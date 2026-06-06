@@ -2,6 +2,7 @@ import { decks, getDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderCardView } from "./card-view.js";
+import { enableSubmitBtn } from "./new-deck-view.js";
 
 const deckTemplateEl = document.querySelector("#deck-template");
 const deckListEl = document.querySelector("#deck-view .gallery__list");
@@ -72,9 +73,10 @@ function showView(sectionToShow, displayValue = "block") {
 
 function renderCurrentView() {
   const hash = window.location.hash || "#deck-view";
+  const deckRoute = hash.startsWith("#deck/") ? hash.slice(6) : null;
 
-  if (hash.startsWith("#/")) {
-    const [deckId, action] = hash.slice(2).split("/");
+  if (hash.startsWith("#/") || deckRoute) {
+    const [deckId, action] = (deckRoute || hash.slice(2)).split("/");
     const currentDeck = getDeckByID(deckId);
 
     if (currentDeck) {
@@ -105,6 +107,7 @@ function renderCurrentView() {
       showView(deckViewSectionEl, "block");
       break;
     case "#new-deck":
+      enableSubmitBtn();
       showView(newDeckViewSectionEl, "block");
       break;
     default:
@@ -115,6 +118,10 @@ function renderCurrentView() {
 
 addDeckBtn.addEventListener("click", () => {
   window.location.hash = "#new-deck";
+});
+
+window.addEventListener("deck:create", (evt) => {
+  renderDeckEl(evt.detail);
 });
 
 window.addEventListener("hashchange", renderCurrentView);

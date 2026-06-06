@@ -1,0 +1,10 @@
+{
+  "name": "Command Line",
+  "cards": [
+    { "question": "What command prints the current working directory?", "answer": "pwd" },
+    { "question": "What command lists the files in the current directory?", "answer": "ls" },
+    { "question": "What command moves you up one directory level?", "answer": "cd .." },
+    { "question": "What command creates a new directory?", "answer": "mkdir" },
+    { "question": "What command removes a file?", "answer": "rm" }
+  ]
+}

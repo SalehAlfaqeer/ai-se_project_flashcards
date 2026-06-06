@@ -1,0 +1,7 @@
+{
+  "cards": [
+    { "question": "What does HTTP stand for?", "answer": "HyperText Transfer Protocol" },
+    { "question": "What HTTP method is used to request data from a server?", "answer": "GET" },
+    { "question": "What HTTP status code means \"Not Found\"?", "answer": "404" }
+  ]
+}

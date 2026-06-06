@@ -1,0 +1,4 @@
+{
+  "name": "Wrong Cards Type",
+  "cards": "these should be an array, not a string"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "HTTP & APIs",
+  "cards": [
+    { "question": "What HTTP method is used to request data from a server?", "answer": "GET" },
+    { "question": "What HTTP method is used to send data to a server to create a resource?", "answer": "POST" },
+    { "question": "What HTTP status code means \"OK\" (success)?", "answer": "200" },
+    { "question": "What HTTP status code means \"Not Found\"?", "answer": "404" },
+    { "question": "What HTTP status code means \"Internal Server Error\"?", "answer": "500" },
+    { "question": "What does API stand for?", "answer": "Application Programming Interface" },
+    { "question": "What data format do most modern APIs send and receive?", "answer": "JSON (JavaScript Object Notation)" },
+    { "question": "What is the difference between a query parameter and a path parameter?", "answer": "Path parameters are part of the URL path (e.g. /users/42); query parameters appear after ? (e.g. ?sort=asc)" }
+  ]
+}

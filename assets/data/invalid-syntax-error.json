@@ -1,0 +1,7 @@
+{
+  "name": "Syntax Error Deck",
+  "cards": [
+    { "question": "What is 2 + 2?", "answer": "4" }
+    { "question": "Missing comma above", "answer": "oops" }
+  ]
+}
