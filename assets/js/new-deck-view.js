@@ -35,19 +35,70 @@ function normalizeColor(color) {
 //=====================================================
 const form = document.querySelector(".new-deck__form");
 const submitBtn = form.querySelector(".new-deck__submit-btn");
+const errorModal = document.querySelector("#error-modal");
+const errorModalCloseBtn = errorModal.querySelector(".modal__close-btn");
+const errorMessageEl = errorModal.querySelector(".modal__error");
+
+function validateName(name) {
+  if (typeof name !== "string" || name.length < 2 || name.length > 80) {
+    return null;
+  }
+  return name;
+}
+
+function parseJSON(jsonString) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    return null;
+  }
+}
+
+function showError(message) {
+  errorMessageEl.textContent = message;
+  errorModal.classList.add("modal_visible");
+}
+
+errorModalCloseBtn.addEventListener("click", () => {
+  errorModal.classList.remove("modal_visible");
+});
 
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const inputs = Object.fromEntries(new FormData(form));
-  const jsonData = JSON.parse(inputs["deck-name-input"]);
-  const color = normalizeColor(inputs.color);
-  const name = jsonData.name;
+  const jsonData = parseJSON(inputs["deck-name-input"]);
+  const colorValue = normalizeColor(inputs.color);
+
+  if (!jsonData) {
+    showError("The deck JSON is invalid. Check the syntax and try again.");
+    return;
+  }
+
+  const name = validateName(jsonData.name);
+  if (!name) {
+    showError("The deck name must be a string between 2 and 80 characters.");
+    return;
+  }
+
   const cards = jsonData.cards;
-  const id = `${slugify(jsonData.name)}-${Date.now()}`;
+  if (!Array.isArray(cards)) {
+    showError("The cards field must be an array.");
+    return;
+  }
+
+  if (
+    typeof jsonData.color === "string" &&
+    jsonData.color.toLowerCase() !== colorValue
+  ) {
+    showError("The JSON color field must match the selected deck color.");
+    return;
+  }
+
+  const id = `${slugify(name)}-${Date.now()}`;
 
   const newDeck = {
     id,
-    color,
+    color: colorValue,
     name,
     cards,
   };
