@@ -11,13 +11,6 @@ const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
  * @param {string} str
  * @returns {string}
  */
-function slugify(str) {
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 /**
  * Returns a consistent lowercase hex color string with a leading "#".

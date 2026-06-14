@@ -17,12 +17,14 @@ const deckViewSectionEl = document.querySelector("#deck-view");
 const cardViewSectionEl = document.querySelector("#card-view");
 const carouselSectionEl = document.querySelector("#carousel");
 const newDeckViewSectionEl = document.querySelector("#new-deck");
+const aboutSectionEl = document.querySelector("#about");
 const notFoundSectionEl = document.querySelector("#not-found");
 const sections = [
   deckViewSectionEl,
   cardViewSectionEl,
   carouselSectionEl,
   newDeckViewSectionEl,
+  aboutSectionEl,
   notFoundSectionEl,
 ];
 
@@ -79,8 +81,6 @@ function createDeckEl(deck) {
 
   return deckEl;
 }
-
-addDeck();
 
 function renderDeckEl(deck) {
   const deckEl = createDeckEl(deck);
@@ -141,6 +141,9 @@ function renderCurrentView() {
     case "#new-deck":
       enableSubmitBtn();
       showView(newDeckViewSectionEl, "block");
+      break;
+    case "#about":
+      showView(aboutSectionEl, "block");
       break;
     default:
       showView(notFoundSectionEl, "block");
