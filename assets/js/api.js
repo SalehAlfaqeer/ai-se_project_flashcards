@@ -77,4 +77,47 @@ function addDeck(deckData) {
   }).then(processResponse);
 }
 
-export { getDecks, deleteDeck, addDeck };
+/**
+ * Add a new card to the specified deck.
+ *
+ * @param {string} deckId - The ID of the deck.
+ * @param {object} cardData - The card data to add.
+ * @returns {Promise<object>} The created card object.
+ */
+function addCard(deckId, cardData) {
+  return fetch(`${baseUrl}/cards/${deckId}`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(cardData),
+  }).then(processResponse);
+}
+
+/**
+ * Update an existing card.
+ *
+ * @param {string} cardId - The ID of the card to update.
+ * @param {object} cardData - The updated card data.
+ * @returns {Promise<object>} The updated card object.
+ */
+function updateCard(cardId, cardData) {
+  return fetch(`${baseUrl}/cards/${cardId}`, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(cardData),
+  }).then(processResponse);
+}
+
+/**
+ * Delete a card by its ID.
+ *
+ * @param {string} cardId - The ID of the card to delete.
+ * @returns {Promise<void>}
+ */
+function deleteCard(cardId) {
+  return fetch(`${baseUrl}/cards/${cardId}`, {
+    method: "DELETE",
+    headers,
+  }).then(processResponse);
+}
+
+export { getDecks, deleteDeck, addDeck, addCard, updateCard, deleteCard };

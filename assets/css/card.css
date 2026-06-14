@@ -71,7 +71,8 @@
 }
 
 .card__flip-btn,
-.card__delete-btn {
+.card__delete-btn,
+.card__edit-btn {
   width: 28px;
   height: 28px;
   opacity: 1;
@@ -81,11 +82,18 @@
   background-repeat: no-repeat;
   border: none;
   z-index: 2;
+  font-size: 18px;
+  color: #222;
 }
 
 .card__flip-btn {
   background-image: url("../images/flip.svg");
   opacity: 0.65;
+}
+
+.card__edit-btn {
+  background-image: none;
+  opacity: 0.9;
 }
 
 .card__delete-btn {
@@ -94,9 +102,53 @@
 }
 
 .card__flip-btn:hover,
-.card__delete-btn:hover {
+.card__delete-btn:hover,
+.card__edit-btn:hover {
   cursor: pointer;
   opacity: 1;
+}
+
+.card-editor {
+  background-color: #ffffff;
+}
+
+.card-editor__form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.card-editor__input {
+  width: 100%;
+  border: 2px solid #d9d9d9;
+  border-radius: 12px;
+  font-size: 16px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  background: #ffffff;
+}
+
+.card-editor__input:focus {
+  outline: none;
+  border-color: #64d583;
+}
+
+.card__check-btn,
+.card__cancel-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  color: #222;
+  font-size: 18px;
+}
+
+.card__check-btn:hover,
+.card__cancel-btn:hover {
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 @media screen and (max-width: 750px) {

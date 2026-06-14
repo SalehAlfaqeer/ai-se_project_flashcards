@@ -1,70 +1,75 @@
-# Top-level heading (i.e., H1)
+# Flashcards App
 
-One H1 should be included at the top of the document.
+A responsive flashcards web app for creating, browsing, and practicing study decks.
 
-## Second level heading (i.e., H2)
+## Overview
 
-H2s are titles for your main subsections.
-Add more `#`s to make smaller heading levels.
+This project lets users manage flashcard decks with features including:
 
-Italics: _asterisks_ or _underscores_.
+- browsing existing decks
+- viewing cards in a deck
+- practicing cards in a carousel-style view
+- creating new decks from JSON input
+- deleting decks
 
-Bold: **asterisks** or double **underscores**.
+The app communicates with a remote API for persistent storage and keeps local state in sync with the server.
 
-Combined italics and bold: **asterisks and** _underscores_\*\*.
+## New Features
 
-Cross out text: ~~Don't need this.~~
-Ordered list
+- **New deck creation**: users can create a deck by entering deck JSON and selecting a color.
+- **Modal error handling**: API validation errors and client-side form issues are shown via a reusable error modal.
+- **Remote database integration**: deck data is fetched, created, and deleted through a remote API endpoint.
+- **JSDoc documentation**: all named JavaScript functions have complete JSDoc comments for easier maintenance.
 
-1. The first point of a numbered list.
-2. The second point.
+## How it works
 
-Unordered list
+1. The app loads existing decks from the remote API.
+2. When a user submits the New Deck form, the app validates the JSON and sends the deck to the API.
+3. The API returns the created deck, which the app adds to local state and renders immediately.
+4. Errors from validation or network requests appear in the modal so users can correct the issue.
+5. When a deck is deleted, the app removes it from both the remote API and the local deck list.
 
-- The first point of an unordered list
-- The second point of an unordered list
+## Running the project locally
 
-The text of the link goes in square brackets, the URL goes in parentheses.
+From the `app` folder, use a simple local server such as:
 
-For example, here is a link to [MDN](https://developer.mozilla.org/en-US/).
-
-Inline code is wrapped in backticks, like
-this `console.log("Hello, world!");`
-
-Code blocks are wrapped (or "fenced") in three backticks.
-By default, there's no syntax highlighting.
-
+```bash
+cd /home/sal7/workspace/app
+python3 -m http.server 8000
 ```
-touch README.md
-```
 
-## Deployed Site
+Then open `http://localhost:8000` in your browser.
 
-Check out [this site](https://salehalfaqeer.github.io/ai-se_project_flashcards/) on GitHub Pages.
+## Deployment
 
-![Demo screenshot](./assets/images/demo/Image.png)
+Check out the deployed version of the app:
 
-## Changes from Sprint #03
+[https://salehalfaqeer.github.io/ai-se_project_flashcards/](https://salehalfaqeer.github.io/ai-se_project_flashcards/)
 
-### The home view
+## Notes
 
-- Making the header bar looks more responsive in the mobile.
-- Creating mobile-bar.css file, to implement the small screen codes inside it.
-- Changing the "New Desck" position to be at the bottom of the page in small screen view (and style it).
-- Making the "linear-gradient" style to the footer.
+- The new deck form expects valid JSON with a `name` string, a `cards` array, and a selected color.
+- The API requires at least one card in the deck.
+- Errors returned from the API are displayed in the modal with readable messages.
 
-### The deck view
+## Project updates
 
-- same changes in the "home view" page + styling and repositioning the practice button.
+### UI and navigation
 
-### The carousel view
+- Added the About view routing and fixed the app's hash-based navigation.
+- Improved mobile display for the deck and carousel views.
 
-- change the position of the buttons in mobile view to be in one row.
-- Change the card width to be full screen.
+### API and state
 
-and we added some shadow to the cards and buttons.
+- Added `addDeck()` and `deleteDeck()` API handlers.
+- Synced local `fetchedDecks` state with create and delete operations.
+- Improved API response parsing so validation errors are surfaced clearly.
+
+### Documentation
+
+- Documented all named functions in the JavaScript modules using JSDoc.
+- Updated the project to make the codebase easier to understand and maintain.
 
 ## Project Pitch Video
 
-Check out [this video](https://drive.google.com/file/d/1gnVl-43xHpvDjk3OBgo_LpPLVGszHz_G/view?usp=sharing), where I describe my
-project and some challenges I faced while building it.
+Check out [this video](https://drive.google.com/file/d/1gnVl-43xHpvDjk3OBgo_LpPLVGszHz_G/view?usp=sharing) for a walkthrough of the project.
