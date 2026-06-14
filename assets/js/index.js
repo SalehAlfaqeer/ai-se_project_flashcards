@@ -3,7 +3,7 @@ import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderCardView } from "./card-view.js";
 import { enableSubmitBtn, showError } from "./new-deck-view.js";
-import { getDecks, deleteDeck } from "./api.js";
+import { getDecks, deleteDeck, addDeck } from "./api.js";
 
 const deckTemplateEl = document.querySelector("#deck-template");
 const deckListEl = document.querySelector("#deck-view .gallery__list");
@@ -79,6 +79,8 @@ function createDeckEl(deck) {
 
   return deckEl;
 }
+
+addDeck();
 
 function renderDeckEl(deck) {
   const deckEl = createDeckEl(deck);

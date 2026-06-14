@@ -12,10 +12,31 @@ const headers = {
  * @returns {Promise<void>}
  */
 function processResponse(res) {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
+  return res.text().then((text) => {
+    let body = null;
+
+    if (text) {
+      try {
+        body = JSON.parse(text);
+      } catch (error) {
+        body = text;
+      }
+    }
+
+    if (res.ok) {
+      return body;
+    }
+
+    const errorMessage =
+      body && typeof body === "object"
+        ? body.error ||
+          Object.values(body.details || {})
+            .map((item) => item.message)
+            .join(" ")
+        : `Error: ${res.status}`;
+
+    return Promise.reject(errorMessage);
+  });
 }
 
 /**
@@ -40,4 +61,12 @@ function deleteDeck(deckId) {
   }).then(processResponse);
 }
 
-export { getDecks, deleteDeck };
+function addDeck(deckData) {
+  return fetch(`${baseUrl}/decks`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(deckData),
+  }).then(processResponse);
+}
+
+export { getDecks, deleteDeck, addDeck };

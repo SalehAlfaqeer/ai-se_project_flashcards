@@ -1,4 +1,5 @@
 import { fetchedDecks } from "./decks.js";
+import { addDeck } from "./api.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
@@ -86,6 +87,28 @@ form.addEventListener("submit", (evt) => {
     return;
   }
 
+  if (cards.length === 0) {
+    showError("The deck must contain at least one card.");
+    return;
+  }
+
+  const invalidCard = cards.find(
+    (card) =>
+      typeof card !== "object" ||
+      card === null ||
+      typeof card.question !== "string" ||
+      typeof card.answer !== "string" ||
+      !card.question.trim() ||
+      !card.answer.trim(),
+  );
+
+  if (invalidCard) {
+    showError(
+      "Each card must be an object with non-empty question and answer fields.",
+    );
+    return;
+  }
+
   if (
     typeof jsonData.color === "string" &&
     jsonData.color.toLowerCase() !== colorValue
@@ -94,20 +117,35 @@ form.addEventListener("submit", (evt) => {
     return;
   }
 
-  const id = `${slugify(name)}-${Date.now()}`;
-
   const newDeck = {
-    _id: id,
     color: colorValue,
     name,
     cards,
   };
 
-  fetchedDecks.push(newDeck);
+  submitBtn.disabled = true;
 
-  window.dispatchEvent(new CustomEvent("deck:create", { detail: newDeck }));
-  window.location.hash = `deck/${id}`;
-  evt.target.reset();
+  addDeck(newDeck)
+    .then((createdDeck) => {
+      fetchedDecks.push(createdDeck);
+      window.dispatchEvent(
+        new CustomEvent("deck:create", { detail: createdDeck }),
+      );
+      window.location.hash = `#/${createdDeck._id}`;
+      evt.target.reset();
+    })
+    .catch((err) => {
+      const message =
+        typeof err === "string"
+          ? err
+          : err && err.error
+            ? err.error
+            : "Failed to create deck.";
+      showError(message);
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+    });
 });
 
 function enableSubmitBtn() {
