@@ -3,7 +3,7 @@ import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderCardView } from "./card-view.js";
 import { enableSubmitBtn, showError } from "./new-deck-view.js";
-import { getDecks } from "./api.js";
+import { getDecks, deleteDeck } from "./api.js";
 
 const deckTemplateEl = document.querySelector("#deck-template");
 const deckListEl = document.querySelector("#deck-view .gallery__list");
@@ -66,7 +66,15 @@ function createDeckEl(deck) {
   deckEl.classList.add(`card_color_${colorName}`);
 
   deleteBtn.addEventListener("click", () => {
-    deckEl.remove();
+    deleteDeck(deck._id)
+      .then(() => {
+        deckEl.remove();
+        const deckIndex = fetchedDecks.findIndex((d) => d._id === deck._id);
+        if (deckIndex !== -1) {
+          fetchedDecks.splice(deckIndex, 1);
+        }
+      })
+      .catch(showError);
   });
 
   return deckEl;

@@ -27,4 +27,17 @@ function getDecks() {
   return fetch(`${baseUrl}/decks`, { headers }).then(processResponse);
 }
 
-export { getDecks };
+/**
+ * Delete a deck from the API by ID.
+ *
+ * @param {string} deckId - The ID of the deck to delete.
+ * @returns {Promise<void>}
+ */
+function deleteDeck(deckId) {
+  return fetch(`${baseUrl}/decks/${deckId}`, {
+    method: "DELETE",
+    headers,
+  }).then(processResponse);
+}
+
+export { getDecks, deleteDeck };
