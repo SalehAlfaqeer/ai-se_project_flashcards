@@ -5,11 +5,10 @@ const headers = {
 };
 
 /**
- * Fetch decks from the API and render them on the page.
- * For each fetched deck, check if it already exists in the local `decks` array.
- * If it doesn't exist, add it to the array and render it using `renderDeckEl`.
+ * Process a fetch response, parsing JSON and rejecting with a normalized error message.
  *
- * @returns {Promise<void>}
+ * @param {Response} res - The fetch response object.
+ * @returns {Promise<any>} A promise that resolves to the parsed body or rejects with an error string.
  */
 function processResponse(res) {
   return res.text().then((text) => {
@@ -61,6 +60,15 @@ function deleteDeck(deckId) {
   }).then(processResponse);
 }
 
+/**
+ * Create a new deck through the API.
+ *
+ * @param {object} deckData - The deck payload to send to the API.
+ * @param {string} deckData.name - The deck name.
+ * @param {string} deckData.color - The deck color string.
+ * @param {Array<object>} deckData.cards - The array of deck cards.
+ * @returns {Promise<object>} A promise that resolves with the created deck object.
+ */
 function addDeck(deckData) {
   return fetch(`${baseUrl}/decks`, {
     method: "POST",

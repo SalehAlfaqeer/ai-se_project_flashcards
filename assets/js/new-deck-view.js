@@ -4,13 +4,18 @@ import { addDeck } from "./api.js";
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
 /**
- * Converts a string to a URL-safe slug: lowercase with any run of
- * non-alphanumeric characters replaced by a single hyphen, and no leading or
- * trailing hyphens.
+ * Converts a string to a URL-safe slug.
  *
- * @param {string} str
- * @returns {string}
+ * @param {string} str - The text to convert into a slug.
+ * @returns {string} The generated slug.
  */
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 /**
  * Returns a consistent lowercase hex color string with a leading "#".
@@ -33,6 +38,12 @@ const errorModal = document.querySelector("#error-modal");
 const errorModalCloseBtn = errorModal.querySelector(".modal__close-btn");
 const errorMessageEl = errorModal.querySelector(".modal__error");
 
+/**
+ * Validate that a deck name is a non-empty string of acceptable length.
+ *
+ * @param {string} name - The deck name to validate.
+ * @returns {string|null} The validated name or null if invalid.
+ */
 function validateName(name) {
   if (typeof name !== "string" || name.length < 2 || name.length > 80) {
     return null;
@@ -40,6 +51,12 @@ function validateName(name) {
   return name;
 }
 
+/**
+ * Parse a JSON string without throwing an exception.
+ *
+ * @param {string} jsonString - The JSON string to parse.
+ * @returns {object|null} The parsed object or null if parsing failed.
+ */
 function parseJSON(jsonString) {
   try {
     return JSON.parse(jsonString);
@@ -48,6 +65,11 @@ function parseJSON(jsonString) {
   }
 }
 
+/**
+ * Display an error message in the modal dialog.
+ *
+ * @param {string} message - The error message to show.
+ */
 function showError(message) {
   errorMessageEl.textContent = message;
   errorModal.classList.add("modal_visible");
@@ -141,6 +163,9 @@ form.addEventListener("submit", (evt) => {
     });
 });
 
+/**
+ * Enable the new deck submit button.
+ */
 function enableSubmitBtn() {
   submitBtn.disabled = false;
 }

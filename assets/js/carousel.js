@@ -13,20 +13,40 @@ let currentIndex = 0;
 let showingQuestion = true;
 let initialized = false;
 
+/**
+ * Build the carousel title text for the current card.
+ *
+ * @param {object} deck - The deck currently being displayed.
+ * @param {number} index - The index of the current card.
+ * @returns {string} The carousel title string.
+ */
 function getCarouselTitleString(deck, index) {
   return `${deck.name} · ${index + 1}/${deck.cards.length}`;
 }
 
+/**
+ * Disable a carousel button and update its styling.
+ *
+ * @param {HTMLButtonElement} buttonEl - The button element to disable.
+ */
 function disableButton(buttonEl) {
   buttonEl.classList.add("carousel__btn_disabled");
   buttonEl.disabled = true;
 }
 
+/**
+ * Enable a carousel button and remove its disabled styling.
+ *
+ * @param {HTMLButtonElement} buttonEl - The button element to enable.
+ */
 function enableButton(buttonEl) {
   buttonEl.classList.remove("carousel__btn_disabled");
   buttonEl.removeAttribute("disabled");
 }
 
+/**
+ * Update the visibility and enabled state of carousel navigation arrows.
+ */
 function updateArrows() {
   if (currentIndex === 0) {
     disableButton(leftBtn);
@@ -41,6 +61,9 @@ function updateArrows() {
   }
 }
 
+/**
+ * Update the carousel card display based on the current deck and index.
+ */
 function updateDisplay() {
   if (!currentDeck) {
     return;
@@ -75,6 +98,9 @@ function updateDisplay() {
   updateArrows();
 }
 
+/**
+ * Initialize carousel event listeners once.
+ */
 function initializeCarousel() {
   if (initialized) {
     return;
@@ -108,6 +134,11 @@ function initializeCarousel() {
   initialized = true;
 }
 
+/**
+ * Render the carousel view for the provided deck.
+ *
+ * @param {object} deck - The deck to show in the carousel.
+ */
 function renderCarouselView(deck) {
   currentDeck = deck;
   currentIndex = 0;

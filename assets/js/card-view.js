@@ -11,6 +11,13 @@ const practiceLinkEl = cardViewSectionEl.querySelector(
   ".gallery__practice-btn",
 );
 
+/**
+ * Create a card element for the card view.
+ *
+ * @param {object} deck - The deck containing the card.
+ * @param {object} card - The card data to render.
+ * @returns {HTMLElement} The created card DOM element.
+ */
 function createCardEl(deck, card) {
   const cardEl = cardTemplateEl.content.querySelector("li").cloneNode(true);
   const titleEl = cardEl.querySelector(".card__title");
@@ -19,6 +26,9 @@ function createCardEl(deck, card) {
   const colorName = hexToString(deck.color) || "green";
   let showingQuestion = true;
 
+  /**
+   * Update the visible text on a card element when flipping it.
+   */
   function updateCardText() {
     titleEl.textContent = showingQuestion ? card.question : card.answer;
     removeColorClasses(cardEl);
@@ -51,12 +61,20 @@ function createCardEl(deck, card) {
   return cardEl;
 }
 
+/**
+ * Remove all currently rendered card elements from the card view.
+ */
 function clearRenderedCards() {
   [...cardListEl.querySelectorAll(".card")].forEach((cardEl) => {
     cardEl.remove();
   });
 }
 
+/**
+ * Render the card view for a specific deck.
+ *
+ * @param {object} deck - The deck with cards to render.
+ */
 function renderCardView(deck) {
   clearRenderedCards();
   cardViewTitleEl.textContent = deck.name;

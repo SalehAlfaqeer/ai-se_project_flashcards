@@ -49,6 +49,12 @@ getDecks()
     renderCurrentView();
   });
 
+/**
+ * Create a deck card DOM element from a deck object.
+ *
+ * @param {object} deck - The deck data to render.
+ * @returns {HTMLElement} The created deck element.
+ */
 function createDeckEl(deck) {
   const deckEl = deckTemplateEl.content.querySelector("li").cloneNode(true);
   const titleEl = deckEl.querySelector(".card__title");
@@ -82,6 +88,11 @@ function createDeckEl(deck) {
   return deckEl;
 }
 
+/**
+ * Render a single deck into the deck gallery.
+ *
+ * @param {object} deck - The deck to render.
+ */
 function renderDeckEl(deck) {
   const deckEl = createDeckEl(deck);
   deckListEl.insertBefore(deckEl, addDeckEl);
@@ -89,6 +100,12 @@ function renderDeckEl(deck) {
 
 // fetchedDecks.forEach(renderDeckEl);
 
+/**
+ * Show one page section while hiding all others.
+ *
+ * @param {HTMLElement} sectionToShow - The section to display.
+ * @param {string} [displayValue="block"] - The CSS display value.
+ */
 function showView(sectionToShow, displayValue = "block") {
   pageEl.classList.remove("page_no-mobile-bar");
   pageMainContentEl.classList.remove("page__main-content_type_carousel");
@@ -103,6 +120,9 @@ function showView(sectionToShow, displayValue = "block") {
   sectionToShow.style.display = displayValue;
 }
 
+/**
+ * Render the current application view based on the URL hash.
+ */
 function renderCurrentView() {
   const hash = window.location.hash || "#deck-view";
   const deckRoute = hash.startsWith("#deck/") ? hash.slice(6) : null;
