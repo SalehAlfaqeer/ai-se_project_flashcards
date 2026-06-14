@@ -1,4 +1,4 @@
-import { decks } from "./decks.js";
+import { fetchedDecks } from "./decks.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
@@ -97,13 +97,13 @@ form.addEventListener("submit", (evt) => {
   const id = `${slugify(name)}-${Date.now()}`;
 
   const newDeck = {
-    id,
+    _id: id,
     color: colorValue,
     name,
     cards,
   };
 
-  decks.push(newDeck);
+  fetchedDecks.push(newDeck);
 
   window.dispatchEvent(new CustomEvent("deck:create", { detail: newDeck }));
   window.location.hash = `deck/${id}`;

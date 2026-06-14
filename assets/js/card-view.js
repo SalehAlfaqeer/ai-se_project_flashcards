@@ -39,7 +39,7 @@ function createCardEl(deck, card) {
 
   deleteBtn.addEventListener("click", () => {
     const cardIndex = deck.cards.findIndex((deckCard) => {
-      return deckCard.id === card.id;
+      return deckCard._id === card._id;
     });
     if (cardIndex !== -1) {
       deck.cards.splice(cardIndex, 1);
@@ -60,7 +60,7 @@ function clearRenderedCards() {
 function renderCardView(deck) {
   clearRenderedCards();
   cardViewTitleEl.textContent = deck.name;
-  practiceLinkEl.href = `#/${deck.id}/practice`;
+  practiceLinkEl.href = `#/${deck._id}/practice`;
 
   deck.cards.forEach((card) => {
     const cardEl = createCardEl(deck, card);
