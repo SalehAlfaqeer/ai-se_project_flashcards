@@ -2,7 +2,8 @@ import { decks, getDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderCardView } from "./card-view.js";
-import { enableSubmitBtn } from "./new-deck-view.js";
+import { enableSubmitBtn, showError } from "./new-deck-view.js";
+import { getDecks } from "./api.js";
 
 const deckTemplateEl = document.querySelector("#deck-template");
 const deckListEl = document.querySelector("#deck-view .gallery__list");
@@ -24,6 +25,22 @@ const sections = [
   newDeckViewSectionEl,
   notFoundSectionEl,
 ];
+
+/**
+ * Fetch decks from the API and render them on the page.
+ * For each fetched deck, check if it already exists in the local `decks` array.
+ * If it doesn't exist, add it to the array and render it using `renderDeckEl`.
+ *
+ * @returns {Promise<void>}
+ */
+getDecks()
+  .then((decks) => {
+    decks.forEach(renderDeckEl);
+  })
+  .catch(showError)
+  .finally(() => {
+    router();
+  });
 
 function createDeckEl(deck) {
   const deckEl = deckTemplateEl.content.querySelector("li").cloneNode(true);
@@ -55,7 +72,7 @@ function renderDeckEl(deck) {
   deckListEl.insertBefore(deckEl, addDeckEl);
 }
 
-decks.forEach(renderDeckEl);
+// decks.forEach(renderDeckEl);
 
 function showView(sectionToShow, displayValue = "block") {
   pageEl.classList.remove("page_no-mobile-bar");

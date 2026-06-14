@@ -114,4 +114,4 @@ function enableSubmitBtn() {
   submitBtn.disabled = false;
 }
 
-export { enableSubmitBtn };
+export { enableSubmitBtn, showError };
