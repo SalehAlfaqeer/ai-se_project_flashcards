@@ -72,4 +72,12 @@ Check out the deployed version of the app:
 
 ## Project Pitch Video
 
-Check out [this video](https://drive.google.com/file/d/1gnVl-43xHpvDjk3OBgo_LpPLVGszHz_G/view?usp=sharing) for a walkthrough of the project.
+Check out [this video]() for a walkthrough of the project.
+
+## Project Pitch Videos
+
+Check out these videos, where I describe my project
+and some challenges I faced while building it:
+
+- [First Video Title](https://drive.google.com/file/d/1gnVl-43xHpvDjk3OBgo_LpPLVGszHz_G/view?usp=sharing)
+- [Second Video Title](https://drive.google.com/file/d/1nGIhxPvs115xC6AnTeOszDIfrWwAk7A7/view?usp=sharing)
