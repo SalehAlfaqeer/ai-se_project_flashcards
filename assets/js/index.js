@@ -35,19 +35,22 @@ const sections = [
  *
  * @returns {Promise<void>}
  */
-getDecks()
-  .then((decks) => {
-    decks.forEach((deck) => {
-      if (!getDeckByID(deck._id)) {
-        fetchedDecks.push(deck);
-        renderDeckEl(deck);
-      }
+
+document.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+    .then((decks) => {
+      decks.forEach((deck) => {
+        if (!getDeckByID(deck._id)) {
+          fetchedDecks.push(deck);
+          renderDeckEl(deck);
+        }
+      });
+    })
+    .catch(showError)
+    .finally(() => {
+      renderCurrentView();
     });
-  })
-  .catch(showError)
-  .finally(() => {
-    renderCurrentView();
-  });
+});
 
 /**
  * Create a deck card DOM element from a deck object.
